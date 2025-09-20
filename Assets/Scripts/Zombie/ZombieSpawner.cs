@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Zombie1 : MonoBehaviour
+public class ZombieSpawner : MonoBehaviour
 {
     [SerializeField] private float _spawnRate = 0.2f;
     [SerializeField] private float _spawnRange = 15f;
@@ -8,16 +8,16 @@ public class Zombie1 : MonoBehaviour
 
     [SerializeField] private Transform _carTransform;
 
+    private ObjectPool<Zombie> _zombiePool;
+
     private float timer;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         timer = _spawnRate;
+        _zombiePool = new ObjectPool<Zombie>(_zombiePrefab);
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
@@ -32,6 +32,11 @@ public class Zombie1 : MonoBehaviour
     private void SpawnZombie()
     {
         Vector3 spawnPoint = new Vector3(Random.Range(-9, 9), 0.09f, _carTransform.position.z + _spawnRange);
-        Instantiate(_zombiePrefab, spawnPoint, Quaternion.identity);
+        Zombie newZombie = _zombiePool.GetObject();
+        newZombie.Reset(_zombiePool, spawnPoint);
+
+        // newZombie.transform.position = spawnPoint;
+
+        // Instantiate(_zombiePrefab, spawnPoint, Quaternion.identity);
     }
 }

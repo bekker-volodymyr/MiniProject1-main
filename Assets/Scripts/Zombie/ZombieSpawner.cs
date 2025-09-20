@@ -7,6 +7,7 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] private Zombie _zombiePrefab;
 
     [SerializeField] private Transform _carTransform;
+    public Transform CarTransfrom => _carTransform;
 
     private ObjectPool<Zombie> _zombiePool;
 
@@ -33,10 +34,6 @@ public class ZombieSpawner : MonoBehaviour
     {
         Vector3 spawnPoint = new Vector3(Random.Range(-9, 9), 0.09f, _carTransform.position.z + _spawnRange);
         Zombie newZombie = _zombiePool.GetObject();
-        newZombie.Reset(_zombiePool, spawnPoint);
-
-        // newZombie.transform.position = spawnPoint;
-
-        // Instantiate(_zombiePrefab, spawnPoint, Quaternion.identity);
+        newZombie.Init(_zombiePool, this, spawnPoint);
     }
 }

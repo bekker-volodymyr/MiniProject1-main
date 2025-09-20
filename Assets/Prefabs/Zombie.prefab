@@ -12,15 +12,16 @@ GameObject:
   - component: {fileID: 3126043052171999576}
   - component: {fileID: 6056146855252130632}
   - component: {fileID: 8817971466535689406}
-  - component: {fileID: 3174499722321229443}
+  - component: {fileID: 2209524128262559581}
   - component: {fileID: 5924481041104453358}
+  - component: {fileID: 3174499722321229443}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4039778439561537524
 Transform:
   m_ObjectHideFlags: 0
@@ -30,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 2139049391617328653}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.31278, y: 1.501, z: 19.7}
-  m_LocalScale: {x: 1.1302, y: 1.3232, z: 1.1785}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -104,7 +105,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -112,20 +113,33 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3174499722321229443
-MonoBehaviour:
+--- !u!54 &2209524128262559581
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139049391617328653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 452726aa5b3a9c34380b2ae935077ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Zombie
-  _wanderRangeMax: 6
-  _wanderRangeMin: 1.5
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!195 &5924481041104453358
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -148,3 +162,18 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3174499722321229443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139049391617328653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452726aa5b3a9c34380b2ae935077ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Zombie
+  _wanderRangeMax: 6
+  _wanderRangeMin: 1.5
+  _agent: {fileID: 5924481041104453358}

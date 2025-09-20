@@ -8,28 +8,31 @@ public class ObjectPool<T> where T : MonoBehaviour
 
     private Queue<T> _pool = new Queue<T>(); // черга об'єктів на спавн
 
+    int counter = 0;
+
     public ObjectPool(T objPrefab)
     {
         _objPrefab = objPrefab;
         for (int i = 0; i < _initSize; i++)
         {
             T obj = GameObject.Instantiate(_objPrefab);
+            obj.name = "Zombie" + obj.GetHashCode();
             obj.gameObject.SetActive(false);
             _pool.Enqueue(obj);
         }
     }
-    
+
     public T GetObject()
     {
-        if(_pool.Count > 0)
+        if (_pool.Count > 0)
         {
             T obj = _pool.Dequeue();
-            obj.gameObject.SetActive(true);
             return obj;
         }
         else
         {
             T obj = GameObject.Instantiate(_objPrefab);
+            _objPrefab.gameObject.SetActive(false);
             return obj;
         }
     }

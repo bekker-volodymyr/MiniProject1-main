@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd1e42c0fd772247937a875f9b2bdec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Zombie1
-  _spawnRate: 0.2
+  _spawnRate: 2
   _spawnRange: 15
   _zombiePrefab: {fileID: 3174499722321229443, guid: 5ff46cbeb0041b344bed30bb20f86eb6, type: 3}
   _carTransform: {fileID: 1682043032}
@@ -606,11 +606,23 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6777179476671445934, guid: 5764d0ee1a80056409a11785141d3c0a, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777179476671445934, guid: 5764d0ee1a80056409a11785141d3c0a, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8030214747585340371, guid: 5764d0ee1a80056409a11785141d3c0a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4575989872767485571, guid: 5764d0ee1a80056409a11785141d3c0a, type: 3}
+    - {fileID: 1355003013639740017, guid: 5764d0ee1a80056409a11785141d3c0a, type: 3}
+    - {fileID: 971528983239198972, guid: 5764d0ee1a80056409a11785141d3c0a, type: 3}
+    - {fileID: 9116669487739344152, guid: 5764d0ee1a80056409a11785141d3c0a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5906789714339453411, guid: 5764d0ee1a80056409a11785141d3c0a, type: 3}
@@ -741,7 +753,7 @@ GameObject:
   - component: {fileID: 881045338}
   - component: {fileID: 881045337}
   - component: {fileID: 881045340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform2
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -882,7 +894,7 @@ GameObject:
   - component: {fileID: 924675253}
   - component: {fileID: 924675252}
   - component: {fileID: 924675255}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform3
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1176,7 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c61c2cac80785649921994a23d3419d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
 --- !u!4 &1682043032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5906789714339453411, guid: 5764d0ee1a80056409a11785141d3c0a, type: 3}
@@ -1305,7 +1317,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6705745403702995561, guid: 027d3d2e3059a8a4497ef9f01a9ac5cc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5076717872328464351, guid: 027d3d2e3059a8a4497ef9f01a9ac5cc, type: 3}
@@ -1335,7 +1348,7 @@ GameObject:
   - component: {fileID: 2071460846}
   - component: {fileID: 2071460845}
   - component: {fileID: 2071460848}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform1
   m_TagString: Ground
   m_Icon: {fileID: 0}

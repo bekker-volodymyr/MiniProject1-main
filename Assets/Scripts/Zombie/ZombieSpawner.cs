@@ -32,7 +32,7 @@ public class ZombieSpawner : MonoBehaviour
 
     private void SpawnZombie()
     {
-        Vector3 spawnPoint = new Vector3(Random.Range(-9, 9), 0.09f, _carTransform.position.z + _spawnRange);
+        Vector3 spawnPoint = new Vector3(Random.Range(-9, 9), 1.7f, _carTransform.position.z + _spawnRange);
         Zombie newZombie = _zombiePool.GetObject();
         newZombie.Init(_zombiePool, this, spawnPoint);
     }

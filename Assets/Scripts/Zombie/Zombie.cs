@@ -14,15 +14,20 @@ public class Zombie : MonoBehaviour
     private ObjectPool<Zombie> _zombiePool;
     private ZombieSpawner _spawner;
 
+    private bool _isAlive = false;
+
     void Update()
     {
-        if (Vector3.Distance(_spawner.CarTransfrom.position, transform.position) >= 40)
+        if (!_isAlive)
+            return;
+
+        if (Vector3.Distance(_spawner.CarTransfrom.position, transform.position) >= 35)
         {
             Death();
             return;
         }
 
-        if (_agent.remainingDistance <= 0.02f)
+        if (!_agent.pathPending && _agent.remainingDistance <= 0.02f)
         {
             Wander();
         }
@@ -42,6 +47,8 @@ public class Zombie : MonoBehaviour
 
         _agent.Warp(_spawnPoint);
 
+        _isAlive = true;
+
         Wander();
     }
 
@@ -54,17 +61,17 @@ public class Zombie : MonoBehaviour
         }
         else
         {
-            _agent.isStopped = true;
-            _zombiePool.ReturnObject(this);
+            Death();
         }
     }
 
     private void Death()
     {
         Debug.Log("Death");
+        _isAlive = false;
         _agent.enabled = false;
         _zombiePool.ReturnObject(this);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     bool GetRandomPoint(Vector3 center, float radius, out Vector3 randomPoint)
@@ -77,7 +84,7 @@ public class Zombie : MonoBehaviour
             randomDirection += center;
 
             NavMeshHit hit;
-            if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
+            if (NavMesh.SamplePosition(randomDirection, out hit, radius, NavMesh.AllAreas))
             {
                 if (Vector3.Distance(transform.position, hit.position) > _wanderRangeMin)
                 {

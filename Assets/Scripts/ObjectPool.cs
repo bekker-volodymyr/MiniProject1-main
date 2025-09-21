@@ -3,12 +3,10 @@ using UnityEngine;
 
 public class ObjectPool<T> where T : MonoBehaviour
 {
-    private T _objPrefab; // префаб об'єкта, який будемо спавнитип
+    private T _objPrefab; // префаб об'єкта, який будемо спавнити
     private int _initSize = 10; // початкова кількість об'єктів
 
     private Queue<T> _pool = new Queue<T>(); // черга об'єктів на спавн
-
-    int counter = 0;
 
     public ObjectPool(T objPrefab)
     {
@@ -16,7 +14,7 @@ public class ObjectPool<T> where T : MonoBehaviour
         for (int i = 0; i < _initSize; i++)
         {
             T obj = GameObject.Instantiate(_objPrefab);
-            obj.name = "Zombie" + obj.GetHashCode();
+            // obj.name = "Zombie" + obj.GetHashCode();
             obj.gameObject.SetActive(false);
             _pool.Enqueue(obj);
         }

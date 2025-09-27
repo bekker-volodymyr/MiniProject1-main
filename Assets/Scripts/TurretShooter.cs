@@ -30,6 +30,7 @@ public class TurretShooter : MonoBehaviour
     private void SpawnBullet()
     {
         Bullet newBullet = _pool.GetObject();
+        newBullet.SetPool(_pool);
         newBullet.transform.position = _spawnPoint.position;
         newBullet.transform.rotation = _spawnPoint.rotation;
         newBullet.gameObject.SetActive(true);

@@ -724,22 +724,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: becc66e8c60c32547ad6f653a8d6463c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretShooter
-  _bulletPrefab: {fileID: 5109211806820889685, guid: cc2f272f630955440872d1fa7c50fa3a, type: 3}
+  _bulletPrefab: {fileID: -5244111060847355860, guid: cc2f272f630955440872d1fa7c50fa3a, type: 3}
   _spawnPoint: {fileID: 1430301700}
-  _spawnRate: 1.5
---- !u!114 &857192945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327188166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71d900f8167c1c6498c49fea9b923e7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TuretScript
-  _rotationSpeed: 0.5
+  _spawnRate: 0.1
 --- !u!1 &881045335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,9 +1315,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3226583421603586234, guid: 027d3d2e3059a8a4497ef9f01a9ac5cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 857192943}
-    - targetCorrespondingSourceObject: {fileID: 3226583421603586234, guid: 027d3d2e3059a8a4497ef9f01a9ac5cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 857192945}
     - targetCorrespondingSourceObject: {fileID: 3226583421603586234, guid: 027d3d2e3059a8a4497ef9f01a9ac5cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 857192944}

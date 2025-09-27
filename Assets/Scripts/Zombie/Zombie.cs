@@ -1,8 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Zombie : MonoBehaviour
 {
+    [SerializeField] private Image _healthBar;
+    float maxHealth = 1;
+    float currentHealth;
+
     [SerializeField] private float _wanderRangeMax = 6f;
     [SerializeField] private float _wanderRangeMin = 1.5f;
 
@@ -38,6 +43,9 @@ public class Zombie : MonoBehaviour
         _zombiePool = zombiePool;
         _spawnPoint = spawnPoint;
         _spawner = spawner;
+
+        currentHealth = maxHealth;
+        _healthBar.fillAmount = 1;
 
         transform.position = _spawnPoint;
 
@@ -104,6 +112,17 @@ public class Zombie : MonoBehaviour
         if (other.CompareTag("Car"))
         {
             Death();
+        }
+
+        if(other.CompareTag("Bullet"))
+        {
+            currentHealth -= 0.25f;
+            _healthBar.fillAmount = currentHealth;
+
+            if(currentHealth <= 0)
+            {
+                Death();
+            }
         }
     }
 }

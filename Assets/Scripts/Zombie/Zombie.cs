@@ -4,12 +4,21 @@ using UnityEngine.UI;
 
 public class Zombie : MonoBehaviour
 {
+    // enum - enumeration - перелічення
+    enum ZombieState
+    {
+        Idle, Agro
+    }
+    private ZombieState state;
+
     [SerializeField] private Image _healthBar;
     float maxHealth = 1;
     float currentHealth;
 
     [SerializeField] private float _wanderRangeMax = 6f;
     [SerializeField] private float _wanderRangeMin = 1.5f;
+
+    [SerializeField] private float _agroDistance = 10f;
 
     [SerializeField]
     private NavMeshAgent _agent;
@@ -32,17 +41,33 @@ public class Zombie : MonoBehaviour
             return;
         }
 
-        if (!_agent.pathPending && _agent.remainingDistance <= 0.02f)
+        if (state == ZombieState.Idle)
         {
-            Wander();
+            _agent.speed = 3.5f;
+            if (!_agent.pathPending && _agent.remainingDistance <= 0.02f)
+            {
+                Wander();
+            }
+            if(Vector3.Distance(_spawner.CarTransfrom.position, transform.position) <= _agroDistance)
+            {
+                state = ZombieState.Agro;
+            }
+        }
+        else if(state == ZombieState.Agro)
+        {
+            _agent.speed = 5f;
+            _agent.SetDestination(_spawner.CarTransfrom.position);
         }
     }
 
+    // Метод який встановлює початкові налаштування зомбі
     public void Init(ObjectPool<Zombie> zombiePool, ZombieSpawner spawner, Vector3 spawnPoint)
     {
         _zombiePool = zombiePool;
         _spawnPoint = spawnPoint;
         _spawner = spawner;
+
+        state = ZombieState.Idle;
 
         currentHealth = maxHealth;
         _healthBar.fillAmount = 1;

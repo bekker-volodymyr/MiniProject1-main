@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -29,6 +30,8 @@ public class Zombie : MonoBehaviour
     private ZombieSpawner _spawner;
 
     private bool _isAlive = false;
+
+    public event System.Action<Vector3> DeathEvent;
 
     void Update()
     {
@@ -100,6 +103,8 @@ public class Zombie : MonoBehaviour
 
     private void Death()
     {
+        DeathEvent?.Invoke(transform.position);
+
         Debug.Log("Death");
         _isAlive = false;
         _agent.enabled = false;
@@ -113,7 +118,7 @@ public class Zombie : MonoBehaviour
 
         for (int i = 0; i < 10; i++)
         {
-            randomDirection = Random.insideUnitSphere * radius;
+            randomDirection = UnityEngine.Random.insideUnitSphere * radius;
             randomDirection += center;
 
             NavMeshHit hit;

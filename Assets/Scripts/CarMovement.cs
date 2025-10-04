@@ -5,7 +5,7 @@ public class CarMovement : MonoBehaviour
     [SerializeField]
     private float speed = 10f;
 
-    public bool IsAlive { get; set; }
+    public bool IsAlive { get; set; } = true;
 
     void Update()
     {
